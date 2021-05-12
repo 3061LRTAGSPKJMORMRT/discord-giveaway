@@ -25,7 +25,6 @@ client.on("ready", () => {
 
     //resume all the giveaways 
     client.guilds.cache.forEach(async guild => {
-        console.log(guild.id)
         let giveawaysran = db.all().filter(data => data.ID.startsWith("giveawayid-") && data.ID.endsWith(guild.id) && db.get(`${data.ID}.running`) == true)
         for (const i of giveawaysran) {
             if (db.get(`${i.ID}.endsAt`) <= Date.now()) {
